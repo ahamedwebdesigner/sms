@@ -15,25 +15,25 @@ router.get('/', function(req, res, next) {
 
 router.get('/createfile',(req,res)=>{
 
-  var hellow = fs.createWriteStream("hellow.txt",{flags:'a'}); //1)creates file
+  var hellow = fs.createWriteStream(__dirname+"/../temp/hellow.txt",{flags:'a'}); //1)creates file
   hellow.write("Hi, Mustaq how are your doing Users. \r\n");
   hellow.write("Hi, Arshiya how are your doing Users. \r\n");
   hellow.close();
+
+
   res.send("file created");
 });
 
 
 
 router.get('/readfile',(req,res)=>{
-    fs.readFile('hellow.txt', 'utf8',(err, data)=> res.send(data) )
+    fs.readFile(__dirname+"/../temp/hellow.txt", 'utf8',(err, data)=> res.send(data) )
 });
 
 
 
 router.get('/deletfile',(req,res)=>{
-  fs.unlink("hellow.txt",()=>{});
-
-
+  fs.unlink(__dirname+"/../temp/hellow.txt",()=>{});
   res.send("file deleted");
 });
 
