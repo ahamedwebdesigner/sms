@@ -38,6 +38,30 @@ router.get('/deletfile',(req,res)=>{
 });
 
 
+router.get('/rename',(req,res)=>{
+  fs.rename(__dirname+"/../temp/hellow.txt",__dirname+"/../temp/hellowworld.txt",(err)=>{
+    if (err) throw err;
+    console.log('renamed complete');
+  });
+  res.send("file renamed");
+});
+
+
+router.get('/getfileinfo',(req,res)=>{
+  
+  fs.stat(__dirname+"/../temp/hellowworld.txt", function (err, stats) {
+    if (err) throw err;
+    // console.log('stats: ' + JSON.stringify(stats));
+    console.log("==================");
+    console.log(stats.isFile());
+    console.log("==================");
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send( JSON.stringify(stats));
+  });
+
+
+});
 
 
 module.exports = router;
