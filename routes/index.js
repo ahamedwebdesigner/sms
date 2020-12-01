@@ -54,6 +54,7 @@ router.get('/getfileinfo',(req,res)=>{
     // console.log('stats: ' + JSON.stringify(stats));
     console.log("==================");
     console.log(stats.isFile());
+    console.log(stats.isDirectory());
     console.log("==================");
 
     res.setHeader('Content-Type', 'application/json');
