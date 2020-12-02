@@ -1,0 +1,14 @@
+# crating new route for any module
+
+## 1) crate route file in routes directory
+
+## 2) import express and route  in created file
+
+## 3) define routes in a new routf
+
+## 4) exporet routes to the module
+
+
+## import created routes file in app.js
+
+## define route using module prefix
