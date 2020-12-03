@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var empRoute = require('./routes/emp');
 var dirmanager = require('./routes/dirmanager');
+var imgmanager = require('./routes/imgmanager');
 
 
 
@@ -33,6 +34,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/emp', empRoute);
 app.use('/dir', dirmanager);
+app.use('/img', imgmanager);
 
 
 
