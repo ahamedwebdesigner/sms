@@ -18,10 +18,50 @@ router.get('/', function(req, res, next) {
   });
 
 
+  
+
+
     res.send("welcome to image module");
    
+});
+
+
+// /img/profile
+router.get('/profile', function(req, res, next) {
+
+  //res.send("uplad file to saved");
+  res.render('profile');
+});
+
+//  img/profile/upload
+router.post('/profile/upload', function(req, res, next) {
+
+  console.log("==============");
+  console.log(req.files.profilepic.name);
+  console.log(req.body);
+  console.log("==============");
+
+  let profilepic = req.files.profilepic;
+ // let imgFolder= __dirname+"/../images/"+profilepic.name;
+
+
+  // NOTE: saving file with original name
+  // profilepic.mv(imgFolder,(err)=>{
+  //   if (err){ return res.status(500).send(err);}
+
+  //   res.send('File uploaded! successefully');
+  // });
+
+  let imgFolder= __dirname+"/../images/"+req.body.userName+".jpg";
+    profilepic.mv(imgFolder,(err)=>{
+    if (err){ return res.status(500).send(err);}
+
+    res.send('File uploaded! successefully');
   });
 
+
+  res.send("file sent");
+});
 
 
 module.exports = router;
