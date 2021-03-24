@@ -34,13 +34,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(fileUpload());
 //app.use(express.bodyParser({ uploadDir:__dirname + '/images/' }));
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/emp', empRoute);
 app.use('/dir', dirmanager);
 app.use('/img', imgmanager);
 app.use('/ajax', ajaxFileUpload);
-app.use('/db', subscribers);
+app.use('/subscribers', subscribers);
 
 
 
