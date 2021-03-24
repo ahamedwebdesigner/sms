@@ -13,7 +13,10 @@ var dirmanager = require('./routes/dirmanager');
 var imgmanager = require('./routes/imgmanager');
 
 var ajaxFileUpload = require('./routes/ajaxFileUpload');
+var subscribers = require('./routes/subscribers');
  
+
+
 var app = express();
 
 
@@ -37,6 +40,7 @@ app.use('/emp', empRoute);
 app.use('/dir', dirmanager);
 app.use('/img', imgmanager);
 app.use('/ajax', ajaxFileUpload);
+app.use('/db', subscribers);
 
 
 
