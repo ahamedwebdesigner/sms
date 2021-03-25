@@ -86,6 +86,27 @@ db.run(sql, params,(err, result) =>{
 
   
 });
+router.post('/edit',(req, res, next) =>{
+
+
+
+var sql ='UPDATE user set name = ?, email = ?, password = ? WHERE id = ?';
+var params =[req.body.name, req.body.email, md5(req.body.password),req.body.id];
+
+db.run(sql, params,(err, result) =>{
+    if (err){
+      res.status(400).json({"error": err.message})
+      return;
+    }
+
+  res.send('user updated successefully with ');
+
+});
+
+
+  
+});
+
 
 
 router.get("/username/:nameofuser", (req, res, next) => {
@@ -128,5 +149,36 @@ router.get("/userId/:ID", (req, res, next) => {
     });
 });
 
+router.get("/edit/:ID", (req, res, next) => {
+  var sql = "select * from user where id = ?"
+  var params = [req.params.ID]
+
+  db.get(sql, params, (err, row) => {
+      if (err) {s
+        res.send('user dosent exist');
+        return;
+      }
+
+      res.render('subscribersEdit', { title: 'Edit subscriber details',data:row });    
+
+
+    });
+});
+
+router.get("/delet/:ID", (req, res, next) => {
+  var sql =  'DELETE FROM user WHERE id = ?';
+  var params = [req.params.ID]
+
+  db.get(sql, params, (err, row) => {
+      if (err) {s
+        res.send('user dosent exist');
+        return;
+      }
+
+      res.send('user deleted successefully');
+
+
+    });
+});
 
 module.exports = router;

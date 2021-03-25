@@ -25,3 +25,13 @@ app.get("/api/user/:id", (req, res, next) => {
         <td>${row.age}</td>
     </tr>`);
 }
+
+
+<ul>
+  <% users.forEach(function(user){ %>
+    <%- include('user/show', {user: user}); %>
+  <% }); %>
+</ul>
+
+
+https://stackabuse.com/a-sqlite-tutorial-with-node-js/
