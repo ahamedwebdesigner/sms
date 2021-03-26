@@ -78,7 +78,7 @@ db.run(sql, params,(err, result) =>{
       return;
     }
 
-  res.send('user data submited with ');
+  res.send('user data submited with successefully');
 
 });
 
