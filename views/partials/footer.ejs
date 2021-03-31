@@ -13,6 +13,43 @@ crossorigin="anonymous"></script>
     <script>
 
             jQuery(document).ready(function($) {
+
+                $("a.delbutton").click(
+                    (e)=>{
+                        e.preventDefault();
+                        let target = $(e.target).attr('href').split("/");
+                        //console.log(target[target.length-1]);
+
+                        $.ajax({
+                            type: "GET",
+                            url: $(e.target).attr('href'),
+                            dataType: "html",
+                            encode: true,
+                            success: function(data){
+                        
+                                   $('#result').show();
+                                    $("#result").html("data submitted"); 
+                                    $("#result").addClass("alert alert-success");
+
+                                    setTimeout(function(){
+                                        if ($('#result').length > 0) {
+                                            //$('#result').remove();
+                                            $('#result').hide();
+                                          
+                                        }
+                                    }, 5000);
+
+                        
+
+
+                                }
+
+                            });
+
+
+
+                    }
+                );
           
                 $("#create-User").click((e)=>{
                     e.preventDefault();
@@ -35,10 +72,26 @@ crossorigin="anonymous"></script>
                     dataType: "html",
                     encode: true,
                     success: function(data){
-                  
+                   
                              $("#result").html("data submitted"); 
                              $("#result").addClass("alert alert-success");
-                        }
+
+                             setTimeout(function(){
+                                        if ($('#result').length > 0) {
+                                            // $('#result').remove();
+                                           // $('#result').hide("slow",'linear');
+                                            $('#result').hide(5000);
+                                            window.location.href='/subscribers/';
+                                          
+                                        }
+                                    }, 3000);
+
+                           
+                        },
+                    complete:()=>{
+                      
+                       
+                    }
 
                     });
 

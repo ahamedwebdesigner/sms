@@ -6,6 +6,7 @@
     <main class="container">
         <div class="bg-light p-5 rounded mt-3">
             <h1><%= title %></h1>
+            <center><div id="result"></div></center>
             <table class="table">
                 <% for(var i=0; i<data.length; i++) {%>
                     <tr>
@@ -16,7 +17,7 @@
                             <a href="/subscribers/edit/<%= data[i].id %>" >Edit</a>
                        </td>
                        <td>
-                          <a href="/subscribers/delet/<%= data[i].id %>" >Delet</a>
+                          <a class="delbutton" href="/subscribers/delet/<%= data[i].id %>" >Delet</a>
                       </td>
                    
                     </tr>
